@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="menu_olclass_root"
+              name="Online Class"
+              web_icon="online_class,static/description/icon.jpg"
+              action=""
+              groups=""
+              sequence="-10"/>
+
+    <menuitem id="menu_schedule_master"
+              name="Schedules"
+              parent="menu_olclass_root"
+              action=""
+              groups=""
+              sequence="0"/>
+
+    <menuitem id="menu_participant_master"
+              name="Participants"
+              parent="menu_olclass_root"
+              action=""
+              groups=""
+              sequence="0"/>
+
+    <!--    <menuitem id="menu_configuration"-->
+    <!--              name="Configurations"-->
+    <!--              parent="menu_hospital_root"-->
+    <!--              action=""-->
+    <!--              groups=""-->
+    <!--              sequence="10"/>-->
+
+    <!--    <menuitem id="menu_cancel_appointment"-->
+    <!--              name="Cancellation"-->
+    <!--              parent="menu_appointment_master"-->
+    <!--              action="action_cancel_appointment"-->
+    <!--              groups=""-->
+    <!--              sequence="20"/>-->
+
+</odoo>

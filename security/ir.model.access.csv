@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.olclass.participant,access_olclass_participant,online_class.model_olclass_participant,base.group_user,1,1,1,1
+access.olclass.schedule,access_olclass_schedule,online_class.model_olclass_schedule,base.group_user,1,1,1,1
