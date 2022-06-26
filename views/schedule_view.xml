@@ -6,24 +6,13 @@
         <field name="model">olclass.schedule</field>
         <field name="arch" type="xml">
             <tree create="1" delete="0">
-                <!--                  decoration-success="state == 'done'"-->
-                <!--                  decoration-danger="state == 'cancel'" sample="1" multi_edit="1">-->
-
+                <field name="topic"/>
                 <field name="teacher_id" widget="many2one_avatar_user"/>
                 <field name="appointment_time" optional="show"/>
-                <!--                <field name="state" widget="badge"-->
-                <!--                       decoration-success="state == 'done'"-->
-                <!--                       decoration-info="state == 'draft'"-->
-                <!--                       decoration-warning="state == 'in_consultation'"-->
-                <!--                       decoration-danger="state == 'cancel'"/>-->
-                <!--                <button name="action_done" type="object" class="fa fa-check btn-success"-->
-                <!--                        attrs="{'invisible':[('state', '!=', 'in_consultation')]}"/>-->
-                <!--                <button name="%(bm_hospital.action_cancel_appointment)d" type="action"-->
-                <!--                        context="{'default_appointment_id': active_id, 'default_reason': 'Unable to attend', 'hide_appointment':1}"-->
-                <!--                        class="fa fa-times btn-danger"-->
-                <!--                        attrs="{'invisible':[('state', 'not in', ('draft','in_consultation'))]}"-->
-                <!--                />-->
-                <!--                <field name="progress" widget="progressbar"/>-->
+                <button name="action_test" string="Start Meeting" type="object"
+                        help="On clicking this button you will be redirected to Meeting Page"
+                        confirm="Are sure to redirect to meeting channel?" class="oe_highlight"
+                        groups="base.group_no_one"/>
             </tree>
         </field>
     </record>
@@ -32,16 +21,22 @@
         <field name="name">olclass.schedule.form</field>
         <field name="model">olclass.schedule</field>
         <field name="arch" type="xml">
-
             <form>
                 <sheet>
                     <group>
                         <group>
+                            <field name="topic"/>
                             <field name="teacher_id" widget="many2one_avatar"/>
+                            <field name="channel"/>
                             <field name="duration"/>
                         </group>
                         <group>
                             <field name="appointment_time"/>
+                            <field name="channel_id"/>
+                            <button name="action_test" string="Start Meeting" type="object"
+                                    help="On clicking this button you will be redirected to Meeting Page"
+                                    confirm="Are sure to redirect to this link?" class="oe_highlight"
+                                    groups="base.group_no_one"/>
                         </group>
                     </group>
                 </sheet>
