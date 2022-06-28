@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access.olclass.participant,access_olclass_participant,online_class.model_olclass_participant,base.group_user,1,1,1,1
+access.olclass.course,access_olclass_course,online_class.model_olclass_course,base.group_user,1,1,1,1
 access.olclass.schedule,access_olclass_schedule,online_class.model_olclass_schedule,base.group_user,1,1,1,1
+access.olclass.channel,access_olclass_channel,online_class.model_olclass_channel,base.group_user,1,1,1,1
+access.olclass.configuration,access_olclass_configuration,online_class.model_olclass_configuration,base.group_user,1,1,1,1
+access.course.tag,access_course_tag,online_class.model_course_tag,base.group_user,1,1,1,1

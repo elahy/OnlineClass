@@ -8,8 +8,15 @@
               groups=""
               sequence="-10"/>
 
-    <menuitem id="menu_schedule_master"
-              name="Schedules"
+    <menuitem id="menu_course_master"
+              name="Courses"
+              parent="menu_olclass_root"
+              action=""
+              groups=""
+              sequence="0"/>
+
+    <menuitem id="menu_channel_master"
+              name="Channels"
               parent="menu_olclass_root"
               action=""
               groups=""
@@ -20,7 +27,13 @@
               parent="menu_olclass_root"
               action=""
               groups=""
-              sequence="0"/>
+              sequence="1"/>
 
+    <menuitem id="menu_configuration_master"
+              name="Configurations"
+              parent="menu_olclass_root"
+              action=""
+              groups=""
+              sequence="100"/>
 
 </odoo>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_course_tree" model="ir.ui.view">
+        <field name="name">olclass.course.tree</field>
+        <field name="model">olclass.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="course_code"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="mail_channel_view_kanban" model="ir.ui.view">
+        <field name="name">olclass.course.kanban</field>
+        <field name="model">olclass.course</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title mb16">
+                                    <div class="o_primary">
+                                        <a type="edit" class="mr-auto">
+                                            <span>
+                                                <field name="name" class="o_primary"/>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div t-if="record.tag_ids">
+                                        <field name="tag_ids" widget="many2many_tags"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_content mt0">
+                                <div class="row mt3">
+                                    <div class="col-4 border-right">
+                                        <a name="action_view_slides" type="object"
+                                           class="d-flex flex-column align-items-center">
+                                            <span class="font-weight-bold">
+                                                <field name="number_of_class"/>
+                                            </span>
+                                            <span class="text-muted">Classes</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 border-right">
+                                        <a name="action_redirect_to_members" type="object"
+                                           class="d-flex flex-column align-items-center">
+                                            <span class="font-weight-bold">
+                                                <field name="number_of_attendees"/>
+                                            </span>
+                                            <span class="text-muted">Attendees</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a name="action_redirect_to_done_members" type="object"
+                                           class="d-flex flex-column align-items-center">
+                                            <span class="font-weight-bold">
+                                                <field name="state"/>
+                                            </span>
+                                            <span name="done_members_count_label" class="text-muted">Status</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_course_form" model="ir.ui.view">
+        <field name="name">olclass.course.form</field>
+        <field name="model">olclass.course</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Course Title"/>
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="e.g. Computer Science for kids"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="instructor"/>
+                            <field name="channel"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="course_code"/>
+                            <field name="number_of_class"/>
+                        </group>
+
+                    </group>
+                    <div class="oe_title">
+                        <label for="course_details" string="Course Details"/>
+                        <field name="course_details"/>
+                    </div>
+                    <notebook>
+                        <page string="Class Schedules" name="schedule">
+                            <field name="schedule_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="teacher_id" widget="many2one_avatar_user"/>
+                                    <field name="appointment_time" optional="show"/>
+                                    <field name="duration"/>
+                                    <button name="action_test" string="Start Meeting" type="object"
+                                            help="On clicking this button you will be redirected to Meeting Page"
+                                            confirm="Are sure to redirect to meeting channel?" class="oe_highlight"
+                                            groups="base.group_no_one"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="teacher_id" widget="many2one_avatar"/>
+                                            <field name="duration"/>
+                                        </group>
+                                        <group>
+                                            <field name="appointment_time"/>
+                                            <button name="action_test" string="Start Meeting" type="object"
+                                                    help="On clicking this button you will be redirected to Meeting Page"
+                                                    confirm="Open Meeting Page in New Window?" class="oe_highlight"
+                                                    groups="base.group_no_one"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_course" model="ir.actions.act_window">
+        <field name="name">Course</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">olclass.course</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first course !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_olclass_course"
+              name="Course Details"
+              parent="menu_course_master"
+              action="action_course"
+              groups=""
+              sequence="10"/>
+</odoo>

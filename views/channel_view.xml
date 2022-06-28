@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-    <record id="view_participant_tree" model="ir.ui.view">
-        <field name="name">olclass.participant.tree</field>
-        <field name="model">olclass.participant</field>
+    <record id="view_channel_tree" model="ir.ui.view">
+        <field name="name">mail.channel.tree</field>
+        <field name="model">mail.channel</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
             </tree>
         </field>
     </record>
+    s
 
     <record id="view_participant_form" model="ir.ui.view">
-        <field name="name">olclass.participant.form</field>
-        <field name="model">olclass.participant</field>
+        <field name="name">mail.channel.form</field>
+        <field name="model">mail.channel</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="participant_id"/>
+                            <field name="channel_partner_ids"/>
                         </group>
                         <group>
                         </group>
@@ -31,21 +32,21 @@
     </record>
 
     <record id="action_participant" model="ir.actions.act_window">
-        <field name="name">Participant</field>
+        <field name="name">Channel</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">olclass.participant</field>
+        <field name="res_model">mail.channel</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Create your first participant !
+                Create your first channel !
             </p>
         </field>
     </record>
 
     <menuitem id="menu_olclass_participant"
-              name="Participant Details"
-              parent="menu_participant_master"
+              name="Channel Details"
+              parent="menu_channel_master"
               action="action_participant"
               groups=""
               sequence="10"/>

@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-    <record id="view_participant_tree" model="ir.ui.view">
-        <field name="name">olclass.participant.tree</field>
-        <field name="model">olclass.participant</field>
+    <record id="view_level_tag_tree" model="ir.ui.view">
+        <field name="name">course.tag.tree</field>
+        <field name="model">course.tag</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
 
-    <record id="view_participant_form" model="ir.ui.view">
-        <field name="name">olclass.participant.form</field>
-        <field name="model">olclass.participant</field>
+    <record id="view_course_tag_form" model="ir.ui.view">
+        <field name="name">course.tag.form</field>
+        <field name="model">course.tag</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="participant_id"/>
+                            <field name="sequence"/>
                         </group>
                         <group>
+                            <field name="active" widget="boolean_toggle"/>
                         </group>
                     </group>
                 </sheet>
@@ -30,23 +32,23 @@
         </field>
     </record>
 
-    <record id="action_participant" model="ir.actions.act_window">
-        <field name="name">Participant</field>
+    <record id="action_course_tag" model="ir.actions.act_window">
+        <field name="name">Course Tags</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">olclass.participant</field>
+        <field name="res_model">course.tag</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Create your first participant !
+                Create your first tag !
             </p>
         </field>
     </record>
 
-    <menuitem id="menu_olclass_participant"
-              name="Participant Details"
-              parent="menu_participant_master"
-              action="action_participant"
+    <menuitem id="menu_course_tag"
+              name="Tags"
+              parent="menu_configuration_master"
+              action="action_course_tag"
               groups=""
               sequence="10"/>
 </odoo>

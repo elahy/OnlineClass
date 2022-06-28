@@ -6,7 +6,7 @@
         <field name="model">olclass.schedule</field>
         <field name="arch" type="xml">
             <tree create="1" delete="0">
-                <field name="topic"/>
+                <field name="name"/>
                 <field name="teacher_id" widget="many2one_avatar_user"/>
                 <field name="appointment_time" optional="show"/>
                 <button name="action_test" string="Start Meeting" type="object"
@@ -25,7 +25,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="topic"/>
+                            <field name="name"/>
                             <field name="teacher_id" widget="many2one_avatar"/>
                             <field name="channel"/>
                             <field name="duration"/>
@@ -35,11 +35,12 @@
                             <field name="channel_id"/>
                             <button name="action_test" string="Start Meeting" type="object"
                                     help="On clicking this button you will be redirected to Meeting Page"
-                                    confirm="Are sure to redirect to this link?" class="oe_highlight"
+                                    confirm="Open Meeting Page in New Window?" class="oe_highlight"
                                     groups="base.group_no_one"/>
                         </group>
                     </group>
                 </sheet>
+
             </form>
         </field>
     </record>
@@ -59,7 +60,7 @@
 
     <menuitem id="menu_schedule"
               name="Schedule Details"
-              parent="menu_schedule_master"
+              parent=""
               action="action_onclass_schedule"
               groups=""
               sequence="0"/>

@@ -12,8 +12,11 @@
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
-        'views/schedule_view.xml',
         'views/participant_view.xml',
+        'views/course_view.xml',
+        'views/channel_view.xml',
+        'views/configuration_view.xml',
+        'views/course_tag_view.xml',
     ],
     'demo': [],
     'installable': True,
